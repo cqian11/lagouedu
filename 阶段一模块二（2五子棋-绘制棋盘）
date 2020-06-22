@@ -1,0 +1,194 @@
+package moduleTwo;
+
+import java.util.Scanner;
+
+public class Chess {
+
+    //定义一个2维数组
+    String[][] brr = new String[17][17];
+
+    //绘制五子棋盘
+    public Chess(){
+
+        //for循环赋值
+        brr[0] = new String[]{" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
+        for (int a=1;a<brr.length;a++){
+            for (int b=1;b<brr[a].length;b++){
+                brr[a][b]= "+";
+                brr[b][0]=brr[0][b];
+            }
+        }
+
+        printChess(brr);
+//        return brr;
+
+    }
+
+    //打印棋盘结果
+    private void printChess(String[][] brr){
+
+        for (int a=0;a<brr.length;a++){
+            for (int b=0;b<brr[a].length;b++){
+                System.out.print(brr[a][b] + " ");
+
+            }
+            System.out.println();
+        }
+    }
+
+    //用户输入位置参数,下棋操作
+    public String[][]  showChess(String color) {
+        if(color.equals("B")){
+            System.out.println("黑方落子位置输入：");
+        }else {
+            System.out.println("白方落子位置输入：");
+        }
+
+        System.out.println("请输入落子位置x：");
+        Scanner sc2 = new Scanner(System.in);
+        String x = sc2.next();
+        System.out.println("请输入落子位置y：");
+        String y = sc2.next();
+
+        int x1 = showStation(x);
+        int y1 = showStation(y);
+        if(brr[x1][y1] != "+"){
+            System.out.println("此位置已经落子！请重新输入！");
+            return showChess(color);
+
+        }
+
+        brr[x1][y1] = color;
+        printChess(brr);
+
+        if(isWin(x1,y1,color)){
+            if(color.equals("B")){
+                System.out.println("黑方win");
+
+            }else {
+                System.out.println("白方win");
+            }
+        }
+        return brr;
+
+    }
+
+    //（3）每当一方下棋后判断是否获胜 - 写一个成员方法实现。
+//    主要判断四个状态
+//    1，横向五个棋子
+//    2，纵向五个棋子
+//    3，左斜五个棋子
+//    4，右斜五个棋子
+    // 判断输赢的方法
+    private boolean isWin(int x, int y, String color) {
+        // 横向
+        for (int i = 0; i < brr.length - 5; i++) {
+            if (brr[x][i].equals(color) && brr[x][i + 1].equals(color)
+                    && brr[x][i + 2].equals(color) && brr[x][i + 3].equals(color)
+                    && brr[x][i + 4].equals(color)) {
+                return true;
+            }
+        }
+        // 竖向
+        for (int i = 0; i < brr.length - 5; i++) {
+            if (brr[i][y].equals(color) && brr[i + 1][y].equals(color)
+                    && brr[i + 2][y].equals(color) && brr[i + 3][y].equals(color)
+                    && brr[i + 4][y].equals(color)) {
+                return true;
+            }
+        }
+        // 斜向下
+        if (x >= y) {
+            int j = 0;
+            for (int i = x - y; i < brr.length - 5; i++) {
+                if (brr[i][j].equals(color) && brr[i + 1][j + 1].equals(color)
+                        && brr[i + 2][j + 2].equals(color) && brr[i + 3][j + 3].equals(color)
+                        && brr[i + 4][j + 4].equals(color)) {
+                    return true;
+                }
+                j++;
+            }
+        } else {
+            int i = 0;
+            for (int j = y - x; j < brr.length - 5; j++) {
+                if (brr[i][j].equals(color) && brr[i + 1][j + 1].equals(color)
+                        && brr[i + 2][j + 2].equals(color) && brr[i + 3][j + 3].equals(color)
+                        && brr[i + 4][j + 4].equals(color)) {
+                    return true;
+                }
+                i++;
+            }
+        }
+        // 斜向上
+        int i = 0;
+        for (int k = x + y - 2; k >= 0; k--) {
+            if (brr[i][k].equals(color) && brr[i + 1][k - 1].equals(color)
+                    && brr[i + 2][k - 2].equals(color) && brr[i + 3][k - 3].equals(color)
+                    && brr[i + 4][k - 4].equals(color)) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
+    //获取数组位置
+    private static int showStation(String x) {
+        int a = 0;
+        switch (x) {
+            case "0":
+                a = 1;
+                break;
+            case "1":
+                a =  2;
+            break;
+            case "2":
+                a =  3;
+            break;
+            case "3":
+                a =  4;
+            break;
+            case "4":
+                a =  5;
+            break;
+            case "5":
+                a =  6;
+            break;
+            case "6":
+                a =  7;
+            break;
+            case "7":
+                a =  8;
+            break;
+            case "8":
+                a =  9;
+                break;
+            case "9":
+                a =  10;
+            break;
+            case "a":
+                a =  11;
+            break;
+            case "b":
+                a =  12;
+            break;
+            case "c":
+                a =  13;
+            break;
+            case "d":
+                a =  14;
+            break;
+            case "e":
+                a =  15;
+            break;
+            case "f":
+                a =  16;
+            break;
+            default :
+                System.out.println("输入的位置不在棋盘上");
+
+        }
+        return a;
+    }
+
+}
