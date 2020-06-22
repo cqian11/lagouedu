@@ -1,0 +1,89 @@
+package moduleTwo;
+
+public class phoneCard {
+    //1）手机卡类 特征：卡类型、卡号、用户名、密码、账户余额、通话时长(分钟)、上网流量 行为：显示（卡号 + 用户名 + 当前余额）
+    private cardEnum cardType;//卡类型
+    private String cardNo;//卡号
+    private String name;//用户名
+    private String key;//密码
+    private double account;//账户余额
+    private int talkTime;//通话时长(分钟)
+    private int net;//上网流量
+
+    //行为：显示（卡号 + 用户名 + 当前余额）
+    public void show(){
+        System.out.println("卡号："+getCardNo() + " 用户名：" + getName() +" 当前余额：" + getAccount());
+    }
+
+
+    public phoneCard() {
+    }
+
+    public phoneCard(cardEnum cardType, String cardNo, String name, String key, int account, int talkTime, int net) {
+        this.cardType = cardType;
+        this.cardNo = cardNo;
+        this.name = name;
+        this.key = key;
+        this.account = account;
+        this.talkTime = talkTime;
+        this.net = net;
+    }
+
+    public cardEnum getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(cardEnum cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public double getAccount() {
+        return account;
+    }
+
+    public void setAccount(int account) {
+        this.account = account;
+    }
+
+    public int getTalkTime() {
+        return talkTime;
+    }
+
+    public void setTalkTime(int talkTime) {
+        this.talkTime = talkTime;
+    }
+
+    public int getNet() {
+        return net;
+    }
+
+    public void setNet(int net) {
+        this.net = net;
+    }
+
+
+}
