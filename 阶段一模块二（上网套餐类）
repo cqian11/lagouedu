@@ -1,0 +1,49 @@
+package moduleTwo;
+
+public class netPackages extends packages implements netServer {
+//    （3）上网套餐类 特征：上网流量、每月资费 行为：显示所有套餐信息
+    private int netLength;
+    private int bill;
+
+    //行为：显示所有套餐信息
+    public void show(){
+        System.out.println("套餐信息，通话时长：" +getNetLength()+ "每月资费："+getBill());
+    }
+
+    public netPackages() {
+    }
+
+    public netPackages(int netLength, int bill) {
+        this.netLength = netLength;
+        this.bill = bill;
+    }
+
+    public int getNetLength() {
+        return netLength;
+    }
+
+    public void setNetLength(int netLength) {
+        this.netLength = netLength;
+    }
+
+    public int getBill() {
+        return bill;
+    }
+
+    public void setBill(int bill) {
+        this.bill = bill;
+    }
+
+    @Override
+    public void packagesMessage(int bill) {
+        System.out.println("重写抽象类抽象方法，打印上网套餐");
+
+    }
+
+    @Override
+    public void net(int netLength, phoneCard phoneCard) {
+        System.out.println("继承上网服务接口，上网流量："+netLength+" 手机卡信息："+phoneCard.getCardNo());
+
+    }
+
+}
