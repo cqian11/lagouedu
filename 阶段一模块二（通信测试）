@@ -1,0 +1,25 @@
+package moduleTwo;
+
+public class communicationTest {
+    public static void main(String[] args) {
+        phoneCard phoneCard = new phoneCard(cardEnum.BIG,"13000001010","张三","123",1000,100,20);
+        phoneCard.show();
+
+        callPackages callPackages = new callPackages(10,20,55);
+        callPackages.show();
+        callPackages.call(10,phoneCard);
+        callPackages.packagesMessage(55);
+
+
+        netPackages netPackages = new netPackages(20,20);
+        netPackages.show();
+        netPackages.net(20,phoneCard);
+        netPackages.packagesMessage(20);
+
+        Consumer consumer = new Consumer();
+        consumer.show();
+
+
+
+    }
+}
