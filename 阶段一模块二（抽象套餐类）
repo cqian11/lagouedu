@@ -1,0 +1,27 @@
+package moduleTwo;
+
+public abstract class packages{
+    //3.3 第三步：实体类的优化 将通话套餐类和上网套餐类中相同的特征和行为提取出来组成抽象套餐类。
+    //（2）通话套餐类 特征：通话时长、短信条数、每月资费 行为: 显示所有套餐信息     （3）上网套餐类 特征：上网流量、每月资费 行为：显示所有套餐信息
+    private int bill;
+
+
+    public packages() {
+    }
+
+    public packages(int bill, int length) {
+        this.bill = bill;
+    }
+
+    public int getBill() {
+        return bill;
+    }
+
+    public void setBill(int bill) {
+        this.bill = bill;
+    }
+
+    public abstract void packagesMessage(int bill);
+
+
+}
