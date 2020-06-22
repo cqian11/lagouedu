@@ -1,0 +1,17 @@
+package moduleTwo;
+
+public enum cardEnum {
+    //手机卡的类型总共有 3 种：大卡、小卡、微型卡
+    BIG("大卡"),SMALL("小卡"),MICS("微型卡");
+
+    private final String cardTypeEnum;
+
+
+    cardEnum(String cardTypeEnum) {
+        this.cardTypeEnum = cardTypeEnum;
+    }
+
+    public String getCardTypeEnum() {
+        return cardTypeEnum;
+    }
+}
