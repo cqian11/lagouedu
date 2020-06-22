@@ -1,0 +1,58 @@
+package moduleTwo;
+
+
+public class moduleTwoTest {
+    public static void main(String[] args) {
+        System.out.println("定义一个长度为[16][16]的整型二维数组并输入所有位置的元素值，分别实现二维数组中所有行和所有列中所有元素的累加和并打印。");
+        //定义一个二维数组
+        int [][] sr = new int[16][16];
+        int aa = 1;
+        for(int a=0;a<sr.length;a++) {
+            for(int b=0;b<sr[a].length;b++){
+                sr[a][b] = aa;
+                aa++;
+            }
+
+        }
+        //打印二维数组结果
+        for (int a=0;a<sr.length;a++){
+            for (int b=0;b<sr[a].length;b++){
+                System.out.print(sr[a][b] + " ");
+
+            }
+            System.out.println();
+        }
+        System.out.println("----------------------------");
+        //左上角到右下角和右上角到左下角所有元素的累加和并打印。
+        int sum = 0;
+        for (int a=0;a<sr.length;a++){
+            int b=a;
+            int c=sr.length-1-a;
+            sum = sum + sr[a][b]+sr[a][c];
+            }
+        System.out.println("左上角到右下角和右上角到左下角所有元素的累加和:" + sum);
+
+        //2. 编程实现控制台版并支持两人对战的五子棋游戏。
+        System.out.println("----------------------------");
+        System.out.println("2. 编程实现控制台版并支持两人对战的五子棋游戏。 ");
+
+        System.out.println("1）绘制棋盘 - 写一个成员方法实现");
+        Chess chess = new Chess();
+
+        System.out.println("（2）提示黑方和白方分别下棋并重新绘制棋盘 - 写一个成员方法实现。");
+
+
+        int i = 0;
+        while (i<10){
+
+            chess.showChess("B");
+
+            chess.showChess("W");
+            i++;
+        }
+
+
+
+
+    }
+}
